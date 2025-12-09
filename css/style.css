@@ -1,0 +1,191 @@
+:root {
+   --color-red-50: rgb(254, 242, 242);
+   --color-red-100: rgb(255, 226, 226);
+   --color-red-500: rgb(251, 44, 54);
+   --color-red-600: rgb(231, 0, 11);
+   --color-red-800: rgb(159, 7, 18);
+   --color-orange-50: rgb(255, 247, 237);
+   --color-orange-100: rgb(255, 237, 212);
+   --color-orange-200: rgb(255, 214, 167);
+   --color-orange-300: rgb(255, 184, 105);
+   --color-orange-500: rgb(255, 105, 0);
+   --color-orange-600: rgb(245, 73, 0);
+   --color-amber-50: rgb(255, 251, 235);
+   --color-amber-400: rgb(255, 185, 0);
+   --color-amber-600: rgb(225, 113, 0);
+   --color-yellow-50: rgb(254, 252, 232);
+   --color-yellow-100: rgb(254, 249, 194);
+   --color-yellow-400: rgb(253, 199, 0);
+   --color-yellow-600: rgb(208, 135, 0);
+   --color-green-100: rgb(220, 252, 231);
+   --color-green-600: rgb(0, 166, 62);
+   --color-green-700: rgb(0, 130, 53);
+   --color-blue-100: rgb(219, 234, 254);
+   --color-blue-500: rgb(43, 127, 255);
+   --color-blue-600: rgb(21, 93, 251);
+   --color-blue-700: rgb(20, 71, 230);
+   --color-pink-100: rgb(252, 231, 243);
+   --color-pink-600: rgb(230, 0, 118);
+   --color-gray-50: rgb(249, 250, 251);
+   --color-gray-200: rgb(229, 231, 235);
+   --color-gray-500: rgb(106, 114, 130);
+   --color-gray-600: rgb(74, 85, 101);
+   --color-gray-700: rgb(54, 65, 83);
+   --color-gray-900: rgb(16, 24, 40);
+   --color-white: rgb(255, 255, 255);
+   --color-scrollbar-thumb: rgba(254, 136, 106, 0.3);
+   --color-scrollbar-thumb-hover: rgba(254, 136, 106, 0.5);
+
+   --transition-duration-150: 0.15s;
+   --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* global */
+html,
+body {
+   line-height: 1.5;
+   font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+img {
+   width: 100%;
+   height: 100%;
+}
+
+/* S T A R T   H E A D E R */
+.navbar {
+   --bs-navbar-toggler-border-color: transparent;
+   .navbar-toggler,
+   .navbar-toggler:focus {
+      box-shadow: none;
+      border: none;
+   }
+   .collapsing {
+      transition: none;
+   }
+   .nav-link,
+   .navbar-toggler {
+      transition: color var(--transition-duration-150) var(--transition-timing-function);
+      &:hover {
+         color: var(--color-orange-600);
+      }
+   }
+   @media (min-width: 768px) {
+      .navbar-collapse {
+         display: flex !important;
+         flex-basis: auto;
+         flex-grow: 0;
+         > div {
+            border: 0 !important;
+         }
+      }
+   }
+}
+/* E N D   H E A D E R */
+
+/* S T A R T   M A I N   S E C T I O N */
+#dinner {
+   /* dinnerPhoto */
+   .dinner-photo {
+      img {
+         object-position: center;
+      }
+   }
+
+   /* dinner-name */
+   .dinner-name {
+      > div:first-child {
+         span {
+            transition: background-color var(--transition-duration-150) var(--transition-timing-function);
+            &:hover {
+               background-color: var(--color-orange-200);
+            }
+         }
+      }
+   }
+
+   /* dinner-caption */
+   .dinner-caption {
+      button {
+         transition: color var(--transition-duration-150) var(--transition-timing-function);
+         position: relative;
+         &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1.5px;
+            top: 100%;
+            left: 0;
+            background-color: transparent;
+            transition: background-color var(--transition-duration-150) var(--transition-timing-function);
+         }
+         &:hover {
+            color: var(--color-gray-700) !important;
+         }
+         &.active {
+            &::after {
+               background-color: var(--color-orange-600);
+            }
+            color: var(--color-orange-600);
+         }
+      }
+      .tab-content {
+         .tab-pane > div {
+            overflow-y: auto;
+            scrollbar-color: var(--color-red-100) transparent;
+            scrollbar-width: thin;
+         }
+      }
+   }
+
+   /* button for Another Recipe */
+   .another-recipe {
+      .btn {
+         padding: 0.5rem 1rem;
+         border-radius: 0.875rem;
+         background-image: linear-gradient(to right, var(--color-orange-500), var(--color-red-500));
+         transition: all var(--transition-duration-150) var(--transition-timing-function);
+         &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px #0000001a, 0 8px 10px -6px #0000001a;
+            background-image: linear-gradient(to right, var(--color-orange-600), var(--color-red-600));
+         }
+      }
+   }
+
+   @media (min-width: 1024px) {
+      & {
+         display: grid;
+         grid-template-columns: repeat(5, minmax(0, 1fr));
+         grid-auto-rows: 1fr;
+         height: 750px;
+         overflow: auto;
+
+         > div:first-child {
+            grid-column: 1/3;
+            height: 100%;
+         }
+         > div:last-child {
+            grid-column: 3/6;
+            height: 100%;
+            overflow: auto;
+         }
+         .dinner-photo {
+            height: 100%;
+         }
+         .dinner-info {
+            /* overflow: auto; */
+            padding: 2.5rem;
+            border-right: 5px solid white;
+
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-red-100) transparent;
+         }
+      }
+      .another-recipe {
+         .btn {
+            padding: 0.75rem 1.5rem;
+         }
+      }
+   }
+}
+/* E N D   M A I N   S E C T I O N */
