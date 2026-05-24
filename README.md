@@ -157,8 +157,3 @@ open index.html
 🔗 [09-What-s-For-Dinner](https://github.com/mohammed-kandeel/09-What-s-For-Dinner)  
 🌐 [Live Demo](https://mohammed-kandeel.github.io/09-What-s-For-Dinner/)
 
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
